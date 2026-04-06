@@ -1,0 +1,45 @@
+#include <iostream>
+#include <cstdlib>
+using namespace std;
+ 
+int main()
+{
+  for (int i=0;i<100;i++)
+  {
+  	cout<<(i)<<("\n");
+  }	;
+ 
+  for (int i=0;i<100;i=i+2)
+  {
+  	cout<<(i)<<("\n");
+  }	;
+ 
+  for (int i=1;i<100;i=i+2)
+  {
+  	cout<<(i)<<("\n");
+  }	;
+}
+
+outro código abaixo
+
+#include <iostream>
+#include <cstdlib>
+using namespace std;
+ 
+int main()
+{
+	int n;
+	cout<<("informe seu numero ou -1 para sair: ");
+	cin>>(n);
+	while (n!=-1)
+	{
+	  cout<<("o dobro do seu numero eh --> ")<<(n*2)<<("\n");
+	  cout<<("informe seu numero ou -1 para sair: ");
+	  cin>>(n);
+	};
+}
+
+
+
+for-variando
+while-enquanto

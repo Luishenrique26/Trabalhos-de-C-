@@ -1,0 +1,36 @@
+#include <iostream>
+#include <vector>
+
+int main() {
+    // Vetor para armazenar as vendas
+    std::vector<double> vendas(3);
+
+    // Variável para armazenar o total das vendas
+    double total = 0.0;
+
+    // Loop para ler as vendas e calcular o total
+    for(int i = 0; i < 3; i++) {
+        std::cout << "Digite o valor da venda " << i + 1 << ": ";
+        std::cin >> vendas[i];
+        total += vendas[i];
+    }
+
+    // Calcula o bonus da venda com base no total de vendas
+    double bonus;
+    if (total >= 120) {
+        bonus = total * 0.20; // 20% de bonus para vendas de 120 reais ou mais
+    } else {
+        bonus = total * 0.10; // 10% de bonus para vendas abaixo de 120 reais
+    }
+
+    // Exibe o total de vendas
+    std::cout << "Total de vendas: " << total << " reais\n";
+
+    // Exibe o bonus da venda
+    std::cout << "Bonus das vendas de pascoa: " << bonus << " reais\n";
+
+    // Exibe se a media corresponde a 20% ou 10%
+    std::cout << "Percentual da media: " << (total >= 120 ? 20 : 10) << "%\n";
+
+    return 0;
+}

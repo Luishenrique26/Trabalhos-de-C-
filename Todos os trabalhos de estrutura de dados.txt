@@ -1,0 +1,361 @@
+23 08
+#include <iostream>lude <iomanip>
+using namespace std;
+int main () 
+{ 
+ int x = 5;  // Declaração e inicialização da variável x
+ int y = 100;  // Declaração e inicialização da variável y
+ // imprimindo com printf
+    printf("O endereco de memoria de x: %p\n", (void*)&x);  // Imprime o endereço de memória de x
+    printf("O endereco de memoria de y: %p\n", (void*)&y);  // Imprime o endereço de memória de y
+
+#inc
+    printf("O valor de x: %d\n", x);  // Imprime o valor armazenado em x
+    printf("O valor de y: %d\n", y);  // Imprime o valor armazenado em y
+
+//imprimindo com cout
+    cout << "O endereco de memoria de x: " << &x << endl;  // Imprime o endereço de memória de x
+    cout << "O endereco de memoria de y: " << &y << endl;  // Imprime o endereço de memória de y
+
+    cout << "O valor de x: " << x << endl;  // Imprime o valor armazenado em x
+    cout << "O valor de y: " << y << endl;  // Imprime o valor armazenado em y
+
+    return 0;
+}
+
+
+
+06 09
+#include <iostream>
+#include <cstdlib>
+#include <String>
+
+using namespace std;
+
+struct aluno
+	{
+		int mat;
+		int cpf;
+	};
+	
+float media(float a,float b, float * c)
+   {
+   	*c=(a+b)/2;
+
+   };
+	
+int main(){
+	float x=100;
+	cout<<(x);
+	cout<<(media(5,7,&x));
+	cout<<(x);
+	
+	aluno a1;
+	a1.mat=90;
+	a1.cpf=50;
+	cout<<"\n";
+	cout<<"mat: "<<a1.mat<<" cpf: "<<a1.cpf;
+	return 0;
+}
+
+
+20 09
+#include <stdio.h>
+#include <stdlib.h>
+
+typedef struct pessoa {
+    char nome [30];
+    char cpf [15];
+    int idade;
+} Pessoa;
+
+void limpa_linha() {
+    scanf("%*[^\n]");
+    scanf("%*c");
+}
+
+/*--------------------------------------------------------------------------------/
+void gravar_registros() {
+
+    FILE *arq;
+    Pessoa pessoa;
+    int i, n_reg;
+
+    printf("\nQuantidade de registros para incluir: ");
+    scanf("%d", &n_reg);
+    limpa_linha();
+
+    arq = fopen("arquivo.bin", "a+b"); // Leitura e escrita, colocando o ponteiro do arquivo no final deste, criando o arquivo caso o mesmo não exista.
+
+    if (arq == NULL) {
+        perror("Erro");
+        exit(1);
+    }
+    for (i = 0; i < n_reg; i++) {
+
+        printf("\nDigite o nome da pessoa: ");
+        scanf("%[^\n]", pessoa.nome);
+        limpa_linha();
+
+        printf("Digite o cpf: ");
+        scanf("%s", pessoa.cpf);
+        limpa_linha();
+
+        printf("Digite a idade: ");
+        scanf("%d", &pessoa.idade);
+        limpa_linha();
+
+        fwrite(&pessoa, sizeof(Pessoa), 1, arq);
+    }
+    fclose(arq);
+}
+
+/*--------------------------------------------------------------------------------/
+void ler_registros() {
+
+    FILE *arquivo;
+    Pessoa pessoa;
+
+    arquivo = fopen("arquivo.bin", "rb");
+
+    if (arquivo == NULL) {
+        printf("erro ao abrir o arquivo.\n");
+        exit(1);
+    }
+
+    printf("\n ========== PESSOAS CADASTRADAS ==========\n\n");
+
+    fread(&pessoa, sizeof(Pessoa), 1, arquivo);
+    do {
+        printf("\nNOME: %s\nCPF: %s\nIDADE: %d\n", pessoa.nome, pessoa.cpf, pessoa.idade);
+        fread(&pessoa, sizeof(Pessoa), 1, arquivo);
+    } while (!feof(arquivo)); // enquanto não chegar ao final do arquivo
+
+    fclose(arquivo);
+}
+
+/*--------------------------------------------------------------------------------/
+int main(void) {
+
+    char opcao;
+
+    do {
+        gravar_registros();
+
+        ler_registros();
+
+        printf("\nDeseja continuar? [s/n]: ");
+        scanf("%c", &opcao);
+        limpa_linha();
+
+    } while (opcao == 's');
+
+    return 0;
+}
+
+
+11 10
+#include<iostream>
+#include<cstdlib>
+using namespace std;
+
+void insere(int codigo[], int&t, int tamanho)
+{
+	int prod;
+	if(tamanho==t)
+	  cout<<"\nAtencao! lista cheia\n";
+	else
+	  {
+	  	cout<<"\nDigite codigo do produto a ser inserido: ";
+	  	cin>>prod;
+	  	codigo[t]=prod;
+	  	t++;
+	  }
+};
+
+void exibe(int codigo[], int t )
+{
+	int x;
+	if(t == 0)
+	  	cout<<"\nAtencao lista vazia\n";
+	else
+		{
+			cout<<"\nRelacao dos codigos\n";
+			for(x=0; x<t;x++)
+			{
+				cout<<"\n"<<x+1<<" - "<<codigo[x];
+	
+			}
+		}
+};
+
+void elemento(int codigo[], int t)
+{
+	int prod, posicao;
+	if(t==0)
+	{
+		cout<<"\nAtencao! lista vazia\n";
+		return;
+	}
+	cout<<"\nQual a posicao que deseja? ";
+	cin>>posicao;
+	posicao=abs(posicao);
+	posicao--;
+	if(posicao>=t)
+	{
+		cout<<"\nAtencao! nenhum codigo armazenado ou posicao inexistente\n";
+	}
+	else
+	{
+		cout<<"\nCodigo na posicao: "<<codigo[posicao]<<"\n";
+	}
+};	
+
+
+
+
+
+int main()
+{
+ int tam, codigoProduto[5],op;
+ do
+ {
+   system("cls");
+   cout<<"\nMenu - LISTA";
+   cout<<"\n0 - Reiniciar a LISTA";
+   cout<<"\n1 - Inserir codigo na LISTA";
+   cout<<"\n2 - Exibir LISTA";
+   cout<<"\n3 - Exibir tamanho da LISTA";
+   cout<<"\n4 - Exibir um elemento da LISTA";
+   cout<<"\n5 - Sair";
+   cout<<"\nOpcao: ";
+   cin>>op;
+   system("cls");
+   switch(op)
+   {
+   	case 0: tam = 0; //reinicializacao
+   	         break;
+   	case 1:	insere(codigoProduto,tam,5);
+	 		break;
+	case 2:	exibe(codigoProduto,tam);
+			break;
+	case 3:	cout<<"\nTamanho da LISTA: "<<tam;
+			break;
+	case 4:	elemento(codigoProduto,tam);
+			break;
+	case 5:	cout<<"\nFinalizando o programa da LISTA\n";
+			break;
+	default: cout<<"\nopcao invalida\n";
+	  		
+    }
+
+   cout<<"\n";
+   system("pause");
+       
+ }while(op!=5); 
+}
+
+alteração feita por mim do codigo do dia 11 10(também)
+#include<iostream>
+#include<cstdlib>
+#include<string>
+using namespace std;
+
+struct Tarefa {
+    string descricao;
+    int prioridade;
+};
+
+void insere(Tarefa tarefas[], int& t, int tamanho) {
+    if(tamanho == t)
+        cout << "\nAtencao! lista cheia\n";
+    else {
+        cout << "\nDigite a descricao da tarefa: ";
+        cin.ignore();
+        getline(cin, tarefas[t].descricao);
+        cout << "Digite a prioridade da tarefa (1-5): ";
+        cin >> tarefas[t].prioridade;
+        t++;
+    }
+}
+
+void exibe(Tarefa tarefas[], int t) {
+    if(t == 0)
+        cout << "\nAtencao lista vazia\n";
+    else {
+        cout << "\nRelacao das tarefas\n";
+        for(int x = 0; x < t; x++) {
+            cout << "\n" << x + 1 << " - " << tarefas[x].descricao << " (Prioridade: " << tarefas[x].prioridade << ")";
+        }
+    }
+}
+
+void elemento(Tarefa tarefas[], int t) {
+    int posicao;
+    if(t == 0) {
+        cout << "\nAtencao! lista vazia\n";
+        return;
+    }
+    cout << "\nQual a posicao que deseja? ";
+    cin >> posicao;
+    posicao = abs(posicao) - 1;
+    if(posicao >= t) {
+        cout << "\nAtencao! nenhuma tarefa armazenada ou posicao inexistente\n";
+    } else {
+        cout << "\nTarefa na posicao: " << tarefas[posicao].descricao << " (Prioridade: " << tarefas[posicao].prioridade << ")\n";
+    }
+}
+
+int main() {
+    int tam = 0, op;
+    Tarefa tarefas[5];
+    do {
+        system("cls");
+        cout << "\nMenu - LISTA DE TAREFAS";
+        cout << "\n0 - Reiniciar a LISTA";
+        cout << "\n1 - Inserir tarefa na LISTA";
+        cout << "\n2 - Exibir LISTA";
+        cout << "\n3 - Exibir tamanho da LISTA";
+        cout << "\n4 - Exibir uma tarefa da LISTA";
+        cout << "\n5 - Sair";
+        cout << "\nOpcao: ";
+        cin >> op;
+        system("cls");
+        switch(op) {
+            case 0: tam = 0; // reinicializacao
+                    break;
+            case 1: insere(tarefas, tam, 5);
+                    break;
+            case 2: exibe(tarefas, tam);
+                    break;
+            case 3: cout << "\nTamanho da LISTA: " << tam;
+                    break;
+            case 4: elemento(tarefas, tam);
+                    break;
+            case 5: cout << "\nFinalizando o programa da LISTA\n";
+                    break;
+            default: cout << "\nopcao invalida\n";
+        }
+        cout << "\n";
+        system("pause");
+    } while(op != 5);
+}
+
+18 10
+# Inicializa a pilha P e a fila F com 7 elementos cada
+P = list(range(1, 8))  # Pilha [1, 2, 3, 4, 5, 6, 7]
+F = list(range(1, 8))  # Fila [1, 2, 3, 4, 5, 6, 7]
+
+# Executa o pseudocódigo
+for _ in range(len(P)):
+    # Operação empilha(P, desempilha(P))
+    elemento_p = P.pop()  # Remove do topo da pilha
+    P.append(elemento_p)   # Insere no topo da pilha novamente
+
+    # Operação enfileira(F, desenfileira(F))
+    elemento_f = F.pop(0)  # Remove do início da fila
+    F.append(elemento_f)    # Insere no final da fila
+
+# Exibe os estados finais
+print("Estado final da Pilha P:", P)
+print("Estado final da Fila F:", F)

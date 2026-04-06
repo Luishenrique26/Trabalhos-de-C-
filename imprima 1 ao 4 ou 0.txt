@@ -1,0 +1,83 @@
+#include <iostream>
+#include <cstdlib>
+using namespace std;
+ 
+int main()
+{
+	int op;
+	cout<<("informe opcao 1,2,3,4 ou 0 : ");
+	cin>>(op);
+	if (op==1)
+	{
+		cout<<("cadastrar");
+	}
+	else
+	{
+		if (op==2)
+		{
+			cout<<("consulta");
+		}
+		else
+		{
+			if (op==3)
+			{
+				cout<<("alterar");
+			}
+			else
+			{
+				if (op==4)
+				{
+					cout<<("excluir");
+				}
+				else
+				{
+					if (op==0)
+					{
+						cout<<("fim do programa");
+					}
+					else
+					{
+						cout<<("krai opcao errada porra");
+					}
+					;
+				};
+			};
+		};
+	};
+}
+
+
+
+outra codificação com mesmo resultado:
+
+#include <iostream>
+#include <cstdlib>
+using namespace std;
+ 
+int main()
+{
+	int c=0;
+	cout<<("informe opcao de 1 a 4 ou 0: ");
+	cin>>(c);
+switch ( c )
+      {
+         case 1:
+            cout<<("CADASTRAR");
+            break;
+         case 2:
+            cout<<("CONSULTAR");
+            break;
+         case 3:
+            cout<<("ALTERAR");
+            break;
+         case 4:
+            cout<<("EXCLUIR");
+            break;
+         case 0:
+            cout<<("FIM DO PROGRAMA");
+            break;
+ 
+         default:
+            cout<<("opcao invalida");
+      }	;
+}

@@ -1,0 +1,134 @@
+ MEMBROS:
+ Brenno Gonçalves 
+ Emerson Nascimento 
+ Lucas Thomaz
+ Luis Henrique 
+ Pedro Henrique 
+ Vitor Guimarães
+
+
+EXERCÍCIO 1
+
+PSEUDOCODIGO 1
+Início
+    Para i de 0 até 4 faça
+       "200,00 "
+         salario
+       " 80,00 "
+         financiamento
+
+ "Financiamento Concedido"
+
+ "Obrigado por nos consultar."
+
+Fim.
+
+CÓDIGO 1
+#include <iostream>
+
+int main() {
+    for(int i = 0; i < 5; i++) {
+        double salario, financiamento;
+        std::cout << "Digite o salario do funcionario: ";
+        std::cin >> salario;
+        std::cout << "Digite o valor do financiamento pretendido: ";
+        std::cin >> financiamento;
+
+        if(financiamento <= 5 * salario) {
+            std::cout << "Financiamento Concedido\n";
+        } else {
+            std::cout << "Financiamento Negado\n";
+        }
+
+        std::cout << "Obrigado por nos consultar.\n";
+    }
+
+    return 0;
+}
+
+EXERCÍCIO 2
+
+PSEUDOCODIGO 2
+
+Início
+    Defina codigo, precoCompra, precoVenda, lucro, totalCompra = 0, totalVenda = 0
+    Defina contLucroMenor10 = 0, contLucro10a20 = 0, contLucroMaior20 = 0
+
+    Escreva "Digite o codigo da mercadoria ou -1 para sair: "
+    Leia codigo
+
+    Enquanto codigo não é igual a -1 faça
+        Escreva "Digite o preco de compra: "
+        Leia precoCompra
+        Escreva "Digite o preco de venda: "
+        Leia precoVenda
+
+        Defina lucro = (precoVenda - precoCompra) / precoCompra * 100
+        Incremente totalCompra por precoCompra
+        Incremente totalVenda por precoVenda
+
+        Se lucro é menor que 10 então
+            Incremente contLucroMenor10
+        Senão se lucro é menor ou igual a 20 então
+            Incremente contLucro10a20
+        Senão
+            Incremente contLucroMaior20
+        Fim-Se
+
+        Escreva "Digite o codigo da mercadoria ou -1 para sair: "
+        Leia codigo
+    Fim-Enquanto
+
+    Escreva "Quantidade de mercadorias com lucro menor que 10%: ", contLucroMenor10
+    Escreva "Quantidade de mercadorias com lucro entre 10% e 20%: ", contLucro10a20
+    Escreva "Quantidade de mercadorias com lucro maior que 20%: ", contLucroMaior20
+    Escreva "Valor total de compra: ", totalCompra
+    Escreva "Valor total de venda: ", totalVenda
+    Escreva "Lucro total: ", totalVenda - totalCompra
+
+Fim.
+
+CÓDIGO 2
+
+#include <iostream>
+
+int main() {
+    int codigo;
+    double precoCompra, precoVenda, lucro, totalCompra = 0, totalVenda = 0;
+    int contLucroMenor10 = 0, contLucro10a20 = 0, contLucroMaior20 = 0;
+
+    std::cout << "Digite o codigo da mercadoria ou -1 para sair: ";
+    std::cin >> codigo;
+
+    while(codigo != -1) {
+        std::cout << "Digite o preco de compra: ";
+        std::cin >> precoCompra;
+        std::cout << "Digite o preco de venda: ";
+        std::cin >> precoVenda;
+
+        lucro = (precoVenda - precoCompra) / precoCompra * 100;
+        totalCompra += precoCompra;
+        totalVenda += precoVenda;
+
+        if(lucro < 10) {
+            contLucroMenor10++;
+        } else if(lucro <= 20) {
+            contLucro10a20++;
+        } else {
+            contLucroMaior20++;
+        }
+
+        std::cout << "Digite o codigo da mercadoria ou -1 para sair: ";
+        std::cin >> codigo;
+    }
+
+    std::cout << "Quantidade de mercadorias com lucro menor que 10%: " << contLucroMenor10 << "\n";
+    std::cout << "Quantidade de mercadorias com lucro entre 10% e 20%: " << contLucro10a20 << "\n";
+    std::cout << "Quantidade de mercadorias com lucro maior que 20%: " << contLucroMaior20 << "\n";
+    std::cout << "Valor total de compra: " << totalCompra << "\n";
+    std::cout << "Valor total de venda: " << totalVenda << "\n";
+    std::cout << "Lucro total: " << totalVenda - totalCompra << "\n";
+
+    return 0;
+}
+

@@ -1,0 +1,86 @@
+#include <stdio.h>
+#include <stdlib.h>
+
+typedef struct pessoa {
+    char nome[30];
+    char matricula[15];
+    int venda1;
+    int venda2;
+    int venda3;
+} Pessoa;
+
+void limpa_linha() {
+    scanf("%*[^\n]");
+    scanf("%*c");
+}
+
+void gravar_registros() {
+    FILE *arq;
+    Pessoa pessoa;
+    int i, n_reg;
+
+    printf("\nQuantidade de registros para incluir: ");
+    scanf("%d", &n_reg);
+    limpa_linha();
+
+    arq = fopen("arquivo.bin", "a+b"); // Leitura e escrita, colocando o ponteiro do arquivo no final deste, criando o arquivo caso o mesmo não exista.
+
+    if (arq == NULL) {
+        perror("Erro");
+        exit(1);
+    }
+    for (i = 0; i < n_reg; i++) {
+        printf("\nDigite o nome da pessoa: ");
+        scanf("%[^\n]", pessoa.nome);
+        limpa_linha();
+
+        printf("Digite a matrícula: ");
+        scanf("%s", pessoa.matricula);
+        limpa_linha();
+
+        printf("Digite a venda1: ");
+        scanf("%d", &pessoa.venda1);
+        limpa_linha();
+
+        printf("Digite a venda2: ");
+        scanf("%d", &pessoa.venda2);
+        limpa_linha();
+
+        printf("Digite a venda3: ");
+        scanf("%d", &pessoa.venda3);
+        limpa_linha();
+
+        fwrite(&pessoa, sizeof(Pessoa), 1, arq);
+    }
+    fclose(arq);
+}
+
+void ler_registros() {
+    FILE *arquivo;
+    Pessoa pessoa;
+    arquivo = fopen("arquivo.bin", "rb");
+    if (arquivo == NULL) {
+        printf("Erro ao abrir o arquivo.\n");
+        exit(1);
+    }
+    printf("\n ========== PESSOAS CADASTRADAS ==========\n\n");
+
+    while (fread(&pessoa, sizeof(Pessoa), 1, arquivo)) {
+        printf("\nNOME: %s\nMATRÍCULA: %s\nVENDA1: %d\nVENDA2: %d\nVENDA3: %d\n", pessoa.nome, pessoa.matricula, pessoa.venda1, pessoa.venda2, pessoa.venda3);
+    }
+
+    fclose(arquivo);
+}
+
+int main(void) {
+    char opcao;
+    do {
+        gravar_registros();
+        ler_registros();
+        printf("\nDeseja continuar? [s/n]: ");
+        scanf(" %c", &opcao);
+        limpa_linha();
+    } while (opcao == 's' || opcao == 'S');
+
+    return 0;
+}

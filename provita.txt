@@ -1,0 +1,20 @@
+prova c
+
+conceitos-seleção, sequencia e repetição
+
+*dados primitivos-float,int,char,bull
+
+input-cin,scanf
+output-cout,printf
+
+switch case-serve para retirar um ninho de if
+
+tipos de repetição- se for definida-for
+se não for definida-while
+
+*vetor-é uma variavel declarada por um tipo
+*matriz-linha e coluna ex:graficos na matematica e excel
+
+*função-consiste em especificar um nome, um tipo de retorno, uma lista de parâmetros e o código da função (variáveis locais mais comandos).
+
+https://www.passeidireto.com/arquivo/93975372/introducao-a-programacao-estruturada-em-c-avaliacao-estacio-ads-1-semestre-2021
